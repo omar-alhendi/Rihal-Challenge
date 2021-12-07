@@ -1,0 +1,24 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>Edit <%= country.name %></title>
+<%layout("layouts/public") %>
+<main>
+  <div class="header">
+    <h1>Edit <%= country.name %></h1>
+  </div>
+  <div class="form">
+    <form action="/countries/<%= country._id %>?_method=PUT" method="post">
+      <label for="name">Country Name</label>
+      <div class="input">
+        <input
+          type="text"
+          name="name"
+          placeholder="country name"
+          id="name"
+          value="<%= country.name %>"
+          required
+        />
+      </div>
+      <button class="submit button slide_right">Submit</button>
+    </form>
+  </div>
+</main>

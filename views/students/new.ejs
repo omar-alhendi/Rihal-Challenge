@@ -1,0 +1,55 @@
+<%layout("layouts/public") %>
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>Add New Student</title>
+<main>
+  <div class="header">
+    <h1>New Student</h1>
+  </div>
+  <div class="students">
+    <div class="form">
+      <form action="/students" method="post">
+        <label for="name">Name</label>
+        <div class="input">
+          <input
+            required
+            type="text"
+            id="name"
+            placeholder="name"
+            name="student[name]"
+          />
+        </div>
+        <label for="date">Date of Birth</label>
+        <div class="input">
+          <input
+            required
+            type="date"
+            id="date"
+            placeholder="Date of Birth"
+            name="student[date]"
+          />
+        </div>
+        <div class="selects">
+          <% if(countries.length > 0) { %>
+          <div class="select">
+            <label for="country">Country</label>
+            <select name="student[country]" id="country">
+              <% for(let country of countries){ %>
+              <option value="<%=country.name%>"><%= country.name %></option>
+              <% } %> <% } %>
+            </select>
+          </div>
+          <% if(subjects.length > 0) { %>
+          <div class="select">
+            <label for="subject">Subject</label>
+            <select name="student[subject]" id="subject">
+              <% for(let subject of subjects){ %>
+              <option value="<%=subject.name%>"><%= subject.name %></option>
+              <% } %> <% } %>
+            </select>
+          </div>
+        </div>
+        <button class="submit button slide_right">Add New Student</button>
+      </form>
+    </div>
+  </div>
+</main>

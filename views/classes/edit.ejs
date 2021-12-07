@@ -1,0 +1,25 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>Edit <%= subject.name %></title>
+<%layout("layouts/public") %>
+<main>
+  <div class="header">
+    <h1>Edit <%= subject.name %></h1>
+  </div>
+  <div class="form">
+    <form action="/classes/<%= subject._id %>?_method=PUT" method="post">
+      <label for="name">Class Name</label>
+      <div class="input">
+        <input
+          type="text"
+          name="name"
+          placeholder="class name"
+          id="name"
+          value="<%= subject.name %>"
+          required
+        />
+      </div>
+      <button class="submit button slide_right">Submit</button>
+    </form>
+  </div>
+</div>
+</main>

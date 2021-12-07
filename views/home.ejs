@@ -1,0 +1,156 @@
+<link href="/css/home.css" rel="stylesheet" type="text/css" />
+<title>Home</title>
+<%layout("layouts/boilerplate") %>
+<main>
+   <h2>Professor Dashboard</h2>
+   <div class="insights">
+      <div class="countries_stats">
+         <div class="header">
+            <h2>Total Countries</h2>
+         </div>
+         <div class="info">
+            <div class="number">
+               <h2><%= countries.length %></h2>
+            </div>
+            <div class="icon">
+               <span class="material-icons-sharp">data_usage</span>  
+            </div>
+         </div>
+         <small class="text-muted">Last 24 hours</small>
+      </div>
+      <!-- End of one -->
+      <div class="average_age">
+         <div class="header">
+            <h2>Average  Age</h2>
+         </div>
+         <div class="info">
+            <div class="number">
+               <h2>
+                 <%if(students.length === 0) {  %> 0 <% } %> 
+                 <% if(students.length > 0 ){%> 
+                  <%=averageAge(students)%> 
+                  <%}%>
+                </h2>
+            </div>
+            <div class="icon">
+               <span class="material-icons-sharp">bar_chart</span>
+            </div>
+         </div>
+         <small class="text-muted">Last 24 hours</small>
+      </div>
+      <!-- End of Expenses -->
+      <div class="subjects_stats">
+         <div class="header">
+            <h2>Total Classes</h2>
+         </div>
+         <div class="info">
+            <div class="number">
+               <h2><%= subjects.length %></h2>
+            </div>
+            <div class="icon">
+               <span class="material-icons-sharp">show_chart</span>
+            </div>
+         </div>
+         <small class="text-muted">Last 24 hours</small>
+      </div>
+      <!-------------------- End of Income ---------------->
+   </div>
+   <!-------------------- End of Insights ---------------->
+   <div class="students_table">
+      <% if(students.length === 0) { %>
+      <div class="message">
+         <h2>No Students Found</h2>
+      </div>
+      <% } %> <% if(students.length > 0) { %>
+      <h2>All Students</h2>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Birth Date</th>
+               <th>Country</th>
+               <th>Class</th>
+               <th></th>
+            </tr>
+         </thead>
+         <tbody>
+            <% for(let i = students.length - 1; i >= students.length - 7 && i >= 0; i--) {%>
+            <tr>
+               <td><%= students[i].name %></td>
+               <td><%= students[i].date %></td>
+               <td>
+                  <% if(students[i].country) { %> <%= students[i].country.name %> <% } %> <%
+                     if(!students[i].country) {%> N/A <% } %>
+               </td>
+               <td>
+                  <% if(students[i].subject) { %> <%= students[i].subject.name %> <% } %> <%
+                     if(!students[i].subject) {%> N/A <% } %>
+               </td>
+               <td class="primary">
+                  <a href="/students/<%= students[i]._id %>">Details</a>
+               </td>
+            </tr>
+            <% } %>
+         </tbody>
+      </table>
+      <a class="show_all" href="/students">Show All</a>
+      <% } %>
+   </div>
+</main>
+<!-------------End of Main---------------->
+<div class="right">
+   <% include /Users/pc/Desktop/RihalChallenge/partials/top %>
+   <div class="countries">
+      <% if(countries.length === 0) { %>
+      <div class="message">
+         <h2>No Subjects Found</h2>
+      </div>
+      <% } %>
+      <% if(countries.length > 0 ) {%>
+      <h2>Countries & Students Count</h2>
+      <%for(let i = 0; i < 4 && i < countries.length; i++) { %>
+      <div class="country <%= i % 2 === 0 ? "online" : "offline"%>">
+         <div class="icon">
+            <span class="material-icons-sharp"> school </span>
+         </div>
+         <div class="info">
+            <h2><%= countries[i].name%></h2>
+            <h2 class="number"><%= countries[i].students.length%></h2>
+         </div>
+      </div>
+      <% } %>
+      <% } %>
+      <div class="button slide_right">
+    <a href="/countries/new">Add New Country</a>
+  </div>
+   </div>
+   <!-------------Classes----------->
+   <div class="classes">
+      <% if(subjects.length === 0) { %>
+      <div class="message">
+         <h2>No Subjects Found</h2>
+      </div>
+      <% } %> <% if(subjects.length > 0) { %>
+      <h2>Recent Classes</h2>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Students</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% for(let i = 0; i < 4 && i < subjects.length; i++) {%>
+            <tr>
+               <td><%= subjects[i].name %></td>
+               <td><%= subjects[i].students.length%></td>
+            </tr>
+            <% } %>
+         </tbody>
+      </table>
+      <div class="button slide_right">
+    <a href="/classes/new">Add New Class</a>
+  </div>
+      <% } %>
+   </div>
+</div>

@@ -1,0 +1,38 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>All Countries</title>
+<%layout("layouts/public") %>
+
+<main>
+  <div class="header">
+    <h1>All Countries</h1>
+  </div>
+  <% if(countries.length === 0) { %>
+  <div class="message">
+    <h2>No Countries Found</h2>
+  </div>
+  <% } %> <% if(countries.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Country Name</th>
+        <th>Student Count</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let country of countries) {%>
+      <tr>
+        <td><%= country.name %></td>
+        <td><%= country.students.length %></td>
+        <td>
+          <a class="primary" href="/countries/<%= country._id %>">Details</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <% } %>
+  <div class="button slide_right">
+    <a href="/countries/new">Add New Country</a>
+  </div>
+</main>

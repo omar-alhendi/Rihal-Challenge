@@ -1,0 +1,23 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>Add New Country</title>
+<%layout("layouts/public") %>
+<main>
+  <div class="header">
+    <h1>Add New Country</h1>
+  </div>
+  <div class="form">
+    <form action="/countries" method="post">
+      <label for="name">Country Name</label>
+      <div class="input">
+        <input
+          type="text"
+          name="name"
+          placeholder="country name"
+          id="name"
+          required
+        />
+      </div>
+      <button class="submit button slide_right">Add New Country</button>
+    </form>
+  </div>
+</main>

@@ -1,0 +1,45 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title><%= country.name%></title>
+<%layout("layouts/public") %>
+<main>
+  <div class="header">
+    <h1><%= country.name%></h1>
+  </div>
+  <% if(country.students.length === 0 ) {%>
+  <div class="message">
+    <h2>No Students Found</h2>
+  </div>
+  <% } %> <% if(country.students.length > 0) {%>
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Student Age</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let student of country.students) {%>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.date %></td>
+        <td>
+          <a class="primary" href="/students/<%= student._id %>">Details</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <% } %>
+  <div class="multiple_buttons">
+    <div class="button slide_right">
+      <a href="/countries">All Countries</a>
+    </div>
+    <div class="button slide_right">
+      <a href="/countries/<%= country._id%>/edit ">Edit</a>
+    </div>
+    <form action="/countries/<%= country._id %>?_method=DELETE" method="post">
+      <button class="delete button slide_right" type="submit">Delete</button>
+    </form>
+  </div>
+</main>

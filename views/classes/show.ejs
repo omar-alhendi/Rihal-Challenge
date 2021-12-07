@@ -1,0 +1,45 @@
+<%layout("layouts/public") %>
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title><%= subject.name%></title>
+<main>
+  <div class="header">
+    <h1><%= subject.name%> Students</h1>
+  </div>
+  <% if(subject.students.length === 0 ) {%>
+  <div class="message">
+    <h2>No Students Found</h2>
+  </div>
+  <% } %> <% if(subject.students.length > 0) {%>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let student of subject.students) {%>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.date %></td>
+        <td>
+          <a class="primary" href="/students/<%= student._id %>">Details</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <% } %>
+  <div class="multiple_buttons">
+    <div class="button slide_right">
+      <a href="/classes">All Classes</a>
+    </div>
+    <div class="button slide_right">
+      <a href="/classes/<%= subject._id%>/edit ">Edit</a>
+    </div>
+    <form action="/classes/<%= subject._id %>?_method=DELETE" method="post">
+      <button class="delete button slide_right" type="submit">Delete</button>
+    </form>
+  </div>
+</main>

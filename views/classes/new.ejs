@@ -1,0 +1,23 @@
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>Add New Class</title>
+<%layout("layouts/public") %>
+<main>
+  <div class="header">
+    <h1>Add New Class</h1>
+  </div>
+  <div class="form">
+    <form action="/classes" method="post">
+      <label for="name">Class Name</label>
+      <div class="input">
+        <input
+          type="text"
+          name="name"
+          placeholder="class name"
+          id="name"
+          required
+        />
+      </div>
+      <button class="submit button slide_right" type="submit">Submit</button>
+    </form>
+  </div>
+</main>

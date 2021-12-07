@@ -1,0 +1,271 @@
+.container {
+  grid-template-columns: 14rem auto 19rem;
+}
+
+main {
+  width: 100vh;
+  height: 100vh;
+  margin-left: 14rem;
+  margin-bottom: 10rem;
+}
+
+main .header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+main .header h1 {
+  font-size: 4.5rem;
+}
+
+table {
+  font-size: 1rem;
+}
+
+table tbody tr td:last-child {
+  color: var(--color-primary);
+}
+
+.form {
+  background: var(--color-white);
+  width: 100vh;
+  height: 35vh;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+}
+
+.form:hover {
+  box-shadow: none;
+}
+
+.form label {
+  margin-left: 0.8rem;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.form .input {
+  display: block;
+  background: var(--color-light);
+  border-radius: var(--border-radius-3);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1.6rem;
+}
+
+.form .input input {
+  background: transparent;
+  color: var(--color-dark);
+  height: 2rem;
+  width: 85vh;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.multiple_buttons {
+  width: 100vh;
+  height: 15vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.multiple_buttons .button {
+  height: 3.5rem;
+  width: 30vh;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.submit.button {
+  background: var(--color-success);
+}
+
+.submit.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 var(--color-white);
+  color: var(--color-success);
+}
+
+.delete.button {
+  background: var(--color-danger);
+}
+
+.delete.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 red;
+  color: var(--color-white);
+}
+
+::-webkit-datetime-edit-text {
+  color: var(--color-dark);
+  padding: 0 0.5rem;
+  font-weight: 800;
+}
+::-webkit-datetime-edit-month-field {
+  color: var(--color-dark);
+  font-size: 1.5rem;
+}
+::-webkit-datetime-edit-day-field {
+  color: var(--color-dark);
+}
+::-webkit-datetime-edit-year-field {
+  color: var(--color-dark);
+}
+.students .form {
+  height: 55vh;
+}
+
+.students .form .selects {
+  width: 100vh;
+  height: 15vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: -1.8rem;
+}
+
+.students .form .select {
+  width: 50vh;
+  height: 17vh;
+}
+
+.students .form .select select {
+  display: block;
+  width: 25vh;
+  height: 3rem;
+  background: var(--color-light);
+  border-radius: var(--border-radius-3);
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.6rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* =================Media Quries =================== */
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: fixed;
+    left: -100%;
+    background: var(--color-white);
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    padding-right: var(--card-padding);
+    display: none;
+    animation: showMenu 400ms ease forwards;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+  #students_index {
+    width: 87vw;
+  }
+
+  #students_index thead tr th:nth-of-type(3),
+  #students_index thead tr th:nth-of-type(4) {
+    display: none;
+  }
+
+  #students_index tbody tr td:nth-of-type(3),
+  #students_index tbody tr td:nth-of-type(4) {
+    display: none;
+  }
+
+  @keyframes showMenu {
+    to {
+      left: 0;
+    }
+  }
+  aside .logo {
+    margin-left: 1rem;
+  }
+  aside .logo h2 {
+    display: inline;
+  }
+  aside .sidebar h3 {
+    display: inline;
+  }
+  aside .sidebar a {
+    width: 100%;
+    height: 3.4rem;
+  }
+  aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 5rem;
+    width: 100%;
+  }
+  aside .close {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  main {
+    margin-top: 10rem;
+    padding: 0 1rem;
+  }
+  main {
+    position: relative;
+    margin: 3rem 0 0 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: 3rem;
+  }
+  main .header {
+    margin-top: 3rem;
+  }
+  main table {
+    width: 90vw;
+    margin: 0;
+  }
+
+  .right {
+    width: 94%;
+    margin: 0 auto 4rem;
+  }
+  .right .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    padding: 0 0.8rem;
+    height: 4.6rem;
+    background: var(--color-white);
+    width: 100%;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 1rem 1rem var(--color-light);
+  }
+
+  .right .top .theme-toggler {
+    width: 4.4rem;
+    position: absolute;
+    left: 66%;
+  }
+  .right .profile .info {
+    display: none;
+  }
+  .right .top button {
+    display: inline-block;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-dark);
+    position: absolute;
+    left: 1rem;
+  }
+
+  .right .top button span {
+    font-size: 2rem;
+  }
+}

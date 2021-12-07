@@ -1,0 +1,45 @@
+<%layout("layouts/public") %>
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title><%= student.name%></title>
+<main>
+  <div class="header">
+    <h1><%= student.name%></h1>
+  </div>
+  <table id="students_index">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th>Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.date %></td>
+        <td><%= calculateAge(student.date) %></td>
+        <td>
+          <% if(student.country) { %> <%= student.country.name %> <% } %> <%
+          if(!student.country) {%> N/A <% } %>
+        </td>
+        <td>
+          <% if(student.subject) { %> <%= student.subject.name %> <% } %> <%
+          if(!student.subject) {%> N/A <% } %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="multiple_buttons">
+    <div class="button slide_right">
+      <a href="/students">All Students</a>
+    </div>
+    <div class="button slide_right">
+      <a href="/students/<%= student._id%>/edit ">Edit</a>
+    </div>
+    <form action="/students/<%= student._id %>?_method=DELETE" method="post">
+      <button class="delete button slide_right" type="submit">Delete</button>
+    </form>
+  </div>
+</main>

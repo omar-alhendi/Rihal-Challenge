@@ -1,0 +1,47 @@
+<%layout("layouts/public") %>
+<link href="/css/public.css" rel="stylesheet" type="text/css" />
+<title>All Students</title>
+<main>
+  <div class="header">
+    <h1>All Students</h1>
+  </div>
+  <% if(students.length === 0) { %>
+  <div class="message">
+    <h2>No Students Found</h2>
+  </div>
+  <% } %> <% if(students.length > 0) { %>
+  <table id="students_index">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Country</th>
+        <th>Class</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let student of students) {%>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.date %></td>
+        <td>
+          <% if(student.country) { %> <%= student.country.name %> <% } %> <%
+          if(!student.country) {%> N/A <% } %>
+        </td>
+        <td>
+          <% if(student.subject) { %> <%= student.subject.name %> <% } %> <%
+          if(!student.subject) {%> N/A <% } %>
+        </td>
+        <td>
+          <a class="primary" href="/students/<%= student._id %>">Details</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <% } %>
+  <div class="button slide_right">
+    <a href="/students/new">Add New Student</a>
+  </div>
+</main>
