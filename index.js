@@ -40,7 +40,7 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-app.get("/", async (req, res) => {
+app.get("/home", async (req, res) => {
   const students = await Student.find({})
     .populate("country")
     .populate("subject");
