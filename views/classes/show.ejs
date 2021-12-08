@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for(let student of subject.students) {%>
+      <% for(let student of subject.students.reverse()) {%>
       <tr>
         <td><%= student.name %></td>
         <td><%= student.date %></td>

@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for(let country of countries) {%>
+      <% for(let country of countries.reverse()) {%>
       <tr>
         <td><%= country.name %></td>
         <td><%= country.students.length %></td>

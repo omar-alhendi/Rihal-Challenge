@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for(let student of country.students) {%>
+      <% for(let student of country.students.reverse()) {%>
       <tr>
         <td><%= student.name %></td>
         <td><%= student.date %></td>

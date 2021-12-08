@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for(let subject of subjects) {%>
+      <% for(let subject of subjects.reverse()) {%>
       <tr>
         <td><%= subject.name %></td>
         <td><%= subject.students.length %></td>
