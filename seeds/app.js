@@ -18,7 +18,7 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 const generateUnique = (arr, num) => {
   let generate = [];
   for (let i = 0; i < num; i++) {
-    generate.push(sample(arr));
+    generate.unshift(sample(arr));
   }
   let unique = generate.filter((item, i, ar) => ar.indexOf(item) === i);
   return unique;
@@ -56,11 +56,11 @@ const seedDB = async () => {
     });
 
     const country = await Country.findById(student.country);
-    country.students.push(student);
+    country.students.unshift(student);
     await country.save();
 
     const subject = await Subject.findById(student.subject);
-    subject.students.push(student);
+    subject.students.unshift(student);
     await subject.save();
 
     await student.save();

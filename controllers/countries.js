@@ -7,7 +7,7 @@ const clearAllStudentsCountries = async function (id) {
   const allStudents = [];
   for (let i = 0; i < country.students.length; i++) {
     let student = await Student.findById(country.students[i]);
-    allStudents.push(student);
+    allStudents.unshift(student);
   }
   for (let i = 0; i < allStudents.length; i++) {
     allStudents[i].country = undefined;
@@ -53,7 +53,7 @@ module.exports.editCountry = async (req, res) => {
 // Delete country
 module.exports.deleteCountry = async (req, res) => {
   const { id } = req.params;
-  clearAllStudentsCountries(id);
+  await clearAllStudentsCountries(id);
   await Country.deleteOne({ _id: id });
   res.redirect("/countries");
 };

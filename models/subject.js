@@ -21,7 +21,7 @@ subjectSchema.post("findOneAndDelete", async function (data) {
     const allStudents = [];
     for (let i = 0; i < data.students.length; i++) {
       let student = await Student.findById(data.students[i]);
-      allStudents.push(student);
+      allStudents.unshift(student);
     }
     for (let i = 0; i < allStudents.length; i++) {
       allStudents[i].subject = undefined;

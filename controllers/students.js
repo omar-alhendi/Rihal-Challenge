@@ -63,18 +63,18 @@ module.exports.createNewStudent = async (req, res) => {
     const country = await Country.findOne({ name: data.country });
     const subject = await Subject.findOne({ name: data.subject });
     const student = new Student({ name, date, country, subject });
-    country.students.push(student);
-    subject.students.push(student);
+    country.students.unshift(student);
+    subject.students.unshift(student);
     await save([subject, country, student]);
   } else if (data.subject && !data.country) {
     const subject = await Subject.findOne({ name: data.subject });
     const student = new Student({ name, date, subject });
-    subject.students.push(student);
+    subject.students.unshift(student);
     await save([subject, student]);
   } else if (data.country && !data.subject) {
     const country = await Country.findOne({ name: data.country });
     const student = new Student({ name, date, country });
-    country.students.push(student);
+    country.students.unshift(student);
     await save([country, student]);
   } else {
     const student = new Student({ name, date });
@@ -117,8 +117,8 @@ module.exports.updateStudent = async (req, res) => {
     const subject = await Subject.findOne({ name: data.subject });
     student = { name, date, country, subject };
     student = await Student.findByIdAndUpdate(id, student);
-    country.students.push(student);
-    subject.students.push(student);
+    country.students.unshift(student);
+    subject.students.unshift(student);
     await save([student, country, subject]);
   } else if (data.subject && !data.country) {
     await clearDeletedStudentSubject(id);
@@ -126,7 +126,7 @@ module.exports.updateStudent = async (req, res) => {
     const subject = await Subject.findOne({ name: data.subject });
     student = { name, date, subject };
     student = await Student.findByIdAndUpdate(id, student);
-    subject.students.push(student);
+    subject.students.unshift(student);
     await save([student, subject]);
   } else if (!data.subject && data.country) {
     await clearDeletedStudentCountry(id);
@@ -134,7 +134,7 @@ module.exports.updateStudent = async (req, res) => {
     const country = await Country.findOne({ name: data.country });
     student = { name, date, country };
     student = await Student.findByIdAndUpdate(id, student);
-    country.students.push(student);
+    country.students.unshift(student);
     await save([student, country]);
   } else {
     student = await Student.findByIdAndUpdate(id, { name, date });

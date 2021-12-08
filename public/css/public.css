@@ -26,6 +26,9 @@ table tbody tr td:last-child {
   color: var(--color-primary);
 }
 
+#students_index tbody tr td:last-child {
+  color: var(--color-dark-variant);
+}
 .form {
   background: var(--color-white);
   width: 100vh;

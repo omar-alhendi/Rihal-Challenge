@@ -53,6 +53,10 @@ app.get("/home", async (req, res) => {
     averageAge,
   });
 });
+
+app.get("/", (req, res) => {
+  res.redirect("/home");
+});
 app.listen(PORT, () => {
   console.log("Connected Port 3000");
 });
